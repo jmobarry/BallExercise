@@ -1,0 +1,75 @@
+<div hidden id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:150px;
+  top:150px;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:green"></div>
+
+<script>
+
+var ball = document.getElementById('ball');
+var Xvelocity = 10;
+var Yvelocity = -20;
+var positionX = 500;
+var positionY = 500;
+var diameter = 50;
+ball.style.left = positionX +'px';
+ball.style.top = positionY +'px';
+ball.hidden = false;
+var isReverse = false;
+
+
+
+// YOUR CODE 
+// ----------------
+
+function myFunction(){ 
+
+var Xmin = 0;
+var Xmax = 1000;
+var Ymin = 0;
+var Ymax= 1000;
+
+
+
+positionX = positionX + Xvelocity;
+positionY = positionY + Yvelocity;
+
+ball.style.left = positionX  + 'px';
+ball.style.top = positionY + 'px';
+
+//perform bounces off walls
+if (positionX < Xmin) {
+  Xvelocity = Math.abs(Xvelocity);
+  ball.style.background = "green";
+  ball.style.width = 100;
+  ball.style.height = 100;
+}
+if(positionX > (Xmax -diameter)){
+  Xvelocity = -(Math.abs(Xvelocity));
+  ball.style.background = "yellow";
+  ball.style.width = 100;
+  ball.style.height = 100;
+}
+if(positionY < Ymin){
+Yvelocity = Math.abs(Yvelocity);
+ball.style.background = "orange";
+ball.style.width = 125;
+ball.style.height = 125;
+}
+if(positionY > (Ymax - diameter)){
+  Yvelocity = -(Math.abs(Yvelocity));
+  ball.style.background = "red";
+  ball.style.width = 125;
+  ball.style.height = 125;
+}
+   
+}
+setInterval(myFunction,50);
+
+
+
+</script>
